@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Task5{
-    public static void main(String[] args) {фва
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         List<String> logins = new ArrayList<>();
