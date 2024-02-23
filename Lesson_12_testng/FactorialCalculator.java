@@ -1,7 +1,7 @@
 public class FactorialCalculator {
     public static long calculateFactorial(int n) {
         if (n < 0) {
-            throw new IllegalArgumentException("Факториал определен только для неотрицательных целых чисел");
+            throw new IllegalArgumentException("Некорректное число (отрицательное или нецелое число)");
         }
 
         long result = 1;
