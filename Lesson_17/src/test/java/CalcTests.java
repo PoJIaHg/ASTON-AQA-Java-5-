@@ -1,17 +1,22 @@
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
-import org.junit.jupiter.api.AfterEach;
+import io.qameta.allure.*;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.junit.jupiter.api.Test;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.jupiter.api.BeforeEach;
-
+import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+@Feature("Arifmetics")
 
 public class CalcTests {
 
@@ -19,6 +24,9 @@ public class CalcTests {
 
     @BeforeEach
     public void setUp() {
+        allureEnvironmentWriter(
+                ImmutableMap.<String, String>builder().put("Mobile phone Poco X3 Pro", "Android").build(),
+                System.getProperty("user.dir") + "/allure-results/");
         initialize();
     }
 
@@ -49,6 +57,11 @@ public class CalcTests {
 
 
 @Test
+@Step ("1")
+@DisplayName("Plus")
+@Description("Check 6+9")
+@Owner("Anton K.")
+
 public void checkSum() {
     driver.findElementById("com.google.android.calculator:id/digit_6").click();
     driver.findElementById("com.google.android.calculator:id/op_add").click();
@@ -58,6 +71,10 @@ public void checkSum() {
 }
 
     @Test
+    @Step ("2")
+    @DisplayName("Minus")
+    @Description("Check 66-66")
+    @Owner("Anton K.")
     public void checkResidual() {
         driver.findElementById("com.google.android.calculator:id/digit_6").click();
         driver.findElementById("com.google.android.calculator:id/digit_6").click();
@@ -69,6 +86,10 @@ public void checkSum() {
     }
 
 @Test
+@Step ("3")
+@DisplayName("Multiply")
+@Description("Check 6х6")
+@Owner("Anton K.")
 public void checkMultiply() {
     driver.findElementById("com.google.android.calculator:id/digit_6").click();
     driver.findElementById("com.google.android.calculator:id/op_mul").click();
@@ -77,6 +98,10 @@ public void checkMultiply() {
     assertEquals("36", driver.findElementByAndroidUIAutomator("new UiSelector().packageNameMatches(\"com.google.android.calculator\").resourceId(\"com.google.android.calculator:id/result_final\")").getText());
 }
     @Test
+    @Step ("4")
+    @DisplayName("Divide")
+    @Description("Проверка 6/6")
+    @Owner("Anton K.")
     public void checkDivide() {
         driver.findElementById("com.google.android.calculator:id/digit_6").click();
         driver.findElementById("com.google.android.calculator:id/op_div").click();
